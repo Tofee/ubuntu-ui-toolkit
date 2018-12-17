@@ -8,9 +8,12 @@ unix {
 }
 
 !contains(QT_ARCH, arm) {
-    DEFINES += UBUNTUTOOLKIT_ENABLE_X11_TOUCH_EMULATION
-    LIBS += -lX11 -lxcb -lXi
-    SOURCES += mousetouchadaptor_x11.cpp
+    DEFINES += ENABLE_TOUCH_EMULATION
+    x11 {
+        DEFINES += UBUNTUTOOLKIT_ENABLE_X11_TOUCH_EMULATION
+        LIBS += -lX11 -lxcb -lXi
+        SOURCES += mousetouchadaptor_x11.cpp
+    }
 }
 
 # Uncomment to compile out qDebug() calls.
